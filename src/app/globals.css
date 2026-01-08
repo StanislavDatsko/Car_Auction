@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 1. ІМПОРТ ПРАПОРІВ (якщо у вас CSS модулі, або Next.js, це може бути в layout.tsx, але тут теж спрацює) */
+/* Якщо цей імпорт видає помилку, перенесіть його в layout.tsx або _app.tsx */
+/* @import 'flag-icons/css/flag-icons.min.css'; - краще імпортувати в JS, див. нижче */
+
+@layer base {
+  :root {
+    --background: 210 40% 8%;
+    --foreground: 0 0% 100%;
+  }
+
+  /* ВИПРАВЛЕННЯ ГОРИЗОНТАЛЬНОГО СКРОЛУ */
+  html, body {
+    overflow-x: hidden; /* Головний фікс */
+    max-width: 100%;    /* Страховка */
+    position: relative;
+  }
+
+  body {
+    @apply bg-primary-darkBlue text-white antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    /* position: relative; - це вже є вище */
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw; /* Замінив 100% на 100vw для надійності фону */
+    height: 100vh;
+    background-image: url('/img/transport-logistics-products.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    opacity: 0.33;
+    filter: contrast(1.2) saturate(1.1);
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+  .glass {
+    @apply backdrop-blur-xl bg-white/5 border border-white/10;
+  }
+
+  .glass-strong {
+    @apply backdrop-blur-xl bg-white/10 border border-white/20;
+  }
+}
+
+:root {
+  font-family: var(--font-main);
+}
+
+html[lang="ar"] body {
+  font-family: var(--font-arabic), sans-serif;
+}
+
+html[lang="ge"] body {
+  font-family: var(--font-georgian), sans-serif;
+}

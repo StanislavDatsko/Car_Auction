@@ -1,0 +1,22 @@
+# Dependencies
+node_modules
+.next
+out
+build
+
+# Config files
+next.config.js
+tailwind.config.ts
+postcss.config.js
+tsconfig.json
+
+# Generated files
+*.tsbuildinfo
+next-env.d.ts
+
+# Public assets
+public
+
+# Logs
+*.log
+
