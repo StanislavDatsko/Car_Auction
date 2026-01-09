@@ -11,30 +11,25 @@ export default function LogisticsSection() {
   return (
     <section className="relative py-20 sm:py-24 lg:py-32 overflow-hidden bg-primary-darkBlue/30">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div className="flex flex-col lg:grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           
-          {/* Текстовий блок */}
-          <motion.div
-            initial={{ opacity: 0, x: dir === 'rtl' ? 50 : -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: '-100px' }}
-            transition={{ duration: 0.8, ease: 'easeOut' }}
-            className={`space-y-6 ${dir === 'rtl' ? 'order-1 lg:order-2' : 'order-2 lg:order-1'}`}
+          {/* Заголовок - тільки для мобільних */}
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className={`text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight order-1 lg:hidden ${dir === 'rtl' ? 'text-right' : 'text-left'}`}
             dir={dir}
           >
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 leading-tight" dir={dir}>
-              <span className="bg-gradient-to-r from-white to-primary-orange/80 bg-clip-text text-transparent">
-                {t.logistics.titlePart1}
-              </span>
-              <br />
-              <span className="text-white/90">
-                {t.logistics.titlePart2}
-              </span>
-            </h2>
-            <p className={`text-lg sm:text-xl text-white/70 leading-relaxed ${dir === 'rtl' ? 'text-right' : 'text-left'}`} dir={dir}>
-              {t.logistics.description}
-            </p>
-          </motion.div>
+            <span className="bg-gradient-to-r from-white to-primary-orange/80 bg-clip-text text-transparent">
+              {t.logistics.titlePart1}
+            </span>
+            <br />
+            <span className="text-white/90">
+              {t.logistics.titlePart2}
+            </span>
+          </motion.h2>
 
           {/* Відео блок */}
           <motion.div
@@ -42,7 +37,7 @@ export default function LogisticsSection() {
             whileInView={{ opacity: 1, x: 0, scale: 1 }}
             viewport={{ once: true, margin: '-100px' }}
             transition={{ duration: 0.8, ease: 'easeOut' }}
-            className={`relative ${dir === 'rtl' ? 'order-2 lg:order-1' : 'order-1 lg:order-2'}`}
+            className={`relative order-2 ${dir === 'rtl' ? 'lg:order-2' : 'lg:order-1'}`}
             dir={dir}
           >
             {/* Декоративне світіння */}
@@ -72,6 +67,30 @@ export default function LogisticsSection() {
                    }}
               />
             </div>
+          </motion.div>
+
+          {/* Текстовий блок - для desktop містить заголовок і опис, для mobile тільки опис */}
+          <motion.div
+            initial={{ opacity: 0, x: dir === 'rtl' ? 50 : -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: '-100px' }}
+            transition={{ duration: 0.8, ease: 'easeOut' }}
+            className={`space-y-6 order-3 ${dir === 'rtl' ? 'lg:order-1' : 'lg:order-2'}`}
+            dir={dir}
+          >
+            {/* Заголовок - тільки для desktop */}
+            <h2 className="hidden lg:block text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 leading-tight" dir={dir}>
+              <span className="bg-gradient-to-r from-white to-primary-orange/80 bg-clip-text text-transparent">
+                {t.logistics.titlePart1}
+              </span>
+              <br />
+              <span className="text-white/90">
+                {t.logistics.titlePart2}
+              </span>
+            </h2>
+            <p className={`text-lg sm:text-xl text-white/70 leading-relaxed ${dir === 'rtl' ? 'text-right' : 'text-left'}`} dir={dir}>
+              {t.logistics.description}
+            </p>
           </motion.div>
         </div>
       </div>
