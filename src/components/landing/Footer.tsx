@@ -20,7 +20,7 @@ export default function Footer() {
   ]
 
   return (
-      <footer className="relative bg-primary-darkBlue border-t border-white/10">
+      <footer className="relative bg-primary-darkBlue/70 backdrop-blur-sm border-t border-white/10">
         <div className="absolute inset-0 opacity-5">
           <div
               className="absolute inset-0 bg-cover bg-center"

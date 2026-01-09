@@ -20,27 +20,9 @@
   }
 
   body {
-    @apply bg-primary-darkBlue text-white antialiased;
+    @apply bg-primary-darkBlue/70 text-white antialiased;
     font-feature-settings: "rlig" 1, "calt" 1;
-    /* position: relative; - це вже є вище */
-  }
-
-  body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw; /* Замінив 100% на 100vw для надійності фону */
-    height: 100vh;
-    background-image: url('/img/transport-logistics-products.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    opacity: 0.33;
-    filter: contrast(1.2) saturate(1.1);
-    z-index: -1;
-    pointer-events: none;
+    /* Фон винесено в layout.tsx як фіксоване Image */
   }
 
   html {
