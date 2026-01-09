@@ -46,12 +46,12 @@ export default function RootLayout({
           alt="Main background"
           fill
           quality={75}
-          className="object-cover object-center opacity-30"
+          className="object-cover object-center opacity-100"
           sizes="100vw"
           priority
           fetchPriority="high"
         />
-        <div className="absolute inset-0 bg-primary-darkBlue/40" />
+        <div className="absolute inset-0 bg-black/20" />
       </div>
       <LanguageProvider>
         {children}
