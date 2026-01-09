@@ -76,7 +76,8 @@ export default function VideoSection() {
                     loop={false}
                     muted
                     playsInline
-                    preload="metadata"
+                    preload="none"
+                    poster="/img/service-image3-copyright-840x560.jpg"
                 >
                   <source src="/video/demo.mp4" type="video/mp4" />
                 </video>
@@ -123,6 +124,7 @@ export default function VideoSection() {
                       controls
                       autoPlay
                       playsInline
+                      preload="auto"
                   >
                     <source src="/video/demo.mp4" type="video/mp4" />
                   </video>

@@ -45,11 +45,11 @@ export default function RootLayout({
           src="/img/main-bg.jpg"
           alt="Main background"
           fill
-          quality={100}
-          unoptimized={true}
+          quality={75}
           className="object-cover object-center opacity-30"
           sizes="100vw"
           priority
+          fetchPriority="high"
         />
         <div className="absolute inset-0 bg-primary-darkBlue/40" />
       </div>

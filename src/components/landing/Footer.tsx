@@ -44,6 +44,8 @@ export default function Footer() {
                   width={150}
                   height={50}
                   className="h-12 w-auto mb-6"
+                  loading="lazy"
+                  decoding="async"
               />
               <p className="text-white/70 mb-8 max-w-xl leading-relaxed text-base">
                 {t.footer.desc}

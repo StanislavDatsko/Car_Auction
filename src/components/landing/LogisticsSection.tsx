@@ -55,7 +55,8 @@ export default function LogisticsSection() {
                 className="w-full h-auto rounded-xl"
                 controls
                 playsInline
-                preload="metadata"
+                preload="none"
+                poster="/img/ship.jpg"
                 style={{
                   boxShadow: '0 0 40px rgba(235, 93, 29, 0.3), 0 0 80px rgba(235, 93, 29, 0.15)',
                 }}

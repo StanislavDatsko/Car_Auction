@@ -34,7 +34,8 @@ export default function Hero() {
             alt="Hero background"
             fill
             priority
-            quality={100}
+            fetchPriority="high"
+            quality={85}
             className="object-cover object-center"
             sizes="100vw"
           />

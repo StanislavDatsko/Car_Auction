@@ -238,6 +238,9 @@ export default function Features() {
                   width={890}
                   height={664}
                   className="w-full h-64 md:h-80 object-cover group-hover:scale-110 transition-transform duration-500"
+                  loading="lazy"
+                  decoding="async"
+                  sizes="(max-width: 768px) 100vw, 50vw"
               />
             </div>
             <div className="relative rounded-2xl overflow-hidden glass-strong group">
@@ -247,6 +250,9 @@ export default function Features() {
                   width={840}
                   height={840}
                   className="w-full h-64 md:h-80 object-cover group-hover:scale-110 transition-transform duration-500"
+                  loading="lazy"
+                  decoding="async"
+                  sizes="(max-width: 768px) 100vw, 50vw"
               />
             </div>
           </motion.div>
