@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { ArrowDown } from 'lucide-react'
+import Image from 'next/image'
 import { useLanguage } from '@/context/LanguageContext'
 
 export default function Hero() {
@@ -28,13 +29,18 @@ export default function Hero() {
       >
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
-          <div
-              className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-              style={{ backgroundImage: 'url(/img/hero-bg.jpg)' }}
-          >
-            <div className="absolute inset-0 bg-gradient-to-b from-primary-darkBlue/50 via-primary-darkBlue/60 to-primary-darkBlue/50" />
-            <div className="absolute inset-0 bg-gradient-to-r from-primary-darkBlue/50 via-transparent to-primary-darkBlue/50" />
-          </div>
+          <Image
+            src="/img/hero-bg.jpg"
+            alt="Hero background"
+            fill
+            priority
+            quality={100}
+            className="object-cover object-center"
+            sizes="100vw"
+          />
+          {/* Overlay - затемнення для кращої читабельності тексту */}
+          <div className="absolute inset-0 bg-black/50" />
+          {/* Анімований акцентний градієнт */}
           <motion.div
               className="absolute inset-0 opacity-30"
               animate={{
