@@ -5,18 +5,32 @@ import { useRef, useState, useEffect } from 'react'
 import { Play, X } from 'lucide-react'
 import { useLanguage } from '@/context/LanguageContext'
 
+const videoPaths: Record<string, string> = {
+  'ua': '/video/demo_ua.mp4',
+  'en': '/video/demo_en.mp4',
+  'pl': '/video/demo_pl.mp4',
+  'lt': '/video/demo_lt.mp4',
+  'ge': '/video/demo_ge.mp4',
+  'ar': '/video/demo_ar.mp4',
+}
+
 export default function VideoSection() {
   const videoRef = useRef<HTMLVideoElement>(null)
   const fullscreenVideoRef = useRef<HTMLVideoElement>(null)
   const [isFullscreen, setIsFullscreen] = useState(false)
-  const { t } = useLanguage()
+
+  // Отримуємо поточну мову (lang)
+  const { t, lang } = useLanguage()
+
+  // Визначаємо джерело відео: якщо для поточної мови немає файлу, беремо англійську або дефолтну
+  const currentVideoSrc = videoPaths[lang] || videoPaths['en'] || '/video/demo_ua.mp4'
 
   useEffect(() => {
     if (videoRef.current) {
       videoRef.current.currentTime = 8
       videoRef.current.pause()
     }
-  }, [])
+  }, [lang]) // Додано lang, щоб при зміні мови відео скидалось
 
   const openFullscreen = () => {
     setIsFullscreen(true)
@@ -69,18 +83,19 @@ export default function VideoSection() {
                 onClick={openFullscreen}
             >
               <div dir="ltr" className="relative rounded-2xl overflow-hidden glass-strong shadow-2xl shadow-primary-orange/20 aspect-video max-h-[400px]">
+
+                {/* --- PREVIEW VIDEO --- */}
                 <video
+                    key={lang} // ВАЖЛИВО: Перестворює плеєр при зміні мови
                     ref={videoRef}
                     className="w-full h-full object-contain"
                     controls={false}
                     loop={false}
                     muted
                     playsInline
-                    preload="none"
-                    poster="/img/service-image3-copyright-840x560.jpg"
-                >
-                  <source src="/video/demo.mp4" type="video/mp4" />
-                </video>
+                    preload="metadata"
+                    src={currentVideoSrc} // Динамічне джерело
+                />
 
                 <div className="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-black/20 transition-colors">
                   <motion.button
@@ -118,16 +133,17 @@ export default function VideoSection() {
                   >
                     <X className="h-6 w-6" />
                   </motion.button>
+
+                  {/* --- FULLSCREEN VIDEO --- */}
                   <video
+                      key={`full-${lang}`} // ВАЖЛИВО: Перестворює плеєр при зміні мови
                       ref={fullscreenVideoRef}
                       className="w-full h-full object-contain rounded-lg"
                       controls
                       autoPlay
                       playsInline
-                      preload="auto"
-                  >
-                    <source src="/video/demo.mp4" type="video/mp4" />
-                  </video>
+                      src={currentVideoSrc} // Динамічне джерело
+                  />
                 </motion.div>
               </motion.div>
           )}
